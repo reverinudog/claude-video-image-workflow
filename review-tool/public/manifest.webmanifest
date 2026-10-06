@@ -1,0 +1,12 @@
+{
+  "name": "レビューツール",
+  "short_name": "レビュー",
+  "description": "動画に時刻つきのメモを書いて Claude に送る、構成メモを添削するツール",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0b0c10",
+  "theme_color": "#0b0c10",
+  "lang": "ja",
+  "icons": [{ "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+}

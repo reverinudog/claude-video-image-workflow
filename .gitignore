@@ -1,0 +1,49 @@
+# 依存・一時ファイル
+node_modules/
+.cache/
+__pycache__/
+*.tmp.wav
+*.log
+
+# 重いメディア（素材と書き出しは記録しない。必要なら案件ごとに外す）
+*.mp4
+*.mov
+*.wav
+*.mp3
+**/public/clips/
+**/out/check/
+**/out/check*/
+
+# ひな形を試したときの書き出し
+templates/**/out/
+templates/still/assets/
+
+# レビューツールの実行時データ（メモ本体の .review.json / .imgreview.json / .md は記録してよい）
+*.review/
+*.imgreview/
+review-tool/inbox/
+review-tool/config.json
+review-tool/.thumbs/
+**/plan/.history/
+
+# ローカル設定
+.claude/settings.local.json
+.claude/launch.json
+
+# lyric-motion：取り込み元の控え・生成物・試験用の曲
+lyric-motion/.upstream/
+lyric-motion/src/jizura/engine.generated.js
+lyric-motion/public/test_song.mp3
+lyric-motion/public/stand/
+
+# motion-kit：見本の素材・手持ちの音のコピー・確かめ用の一覧・切り出した動画
+motion-kit/public/demo/
+motion-kit/public/lib/
+motion-kit/out/
+motion-kit/catalog/clips/
+# 手持ちの音の一覧（se_catalog.py が作る。自分の素材の名前が入るので記録しない）
+motion-kit/SOUND_LIBRARY.md
+
+# Remotion が自動で落とす書き出し用のブラウザ
+.remotion/
+**/.remotion/

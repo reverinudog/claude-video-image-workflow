@@ -1,0 +1,37 @@
+# JIZURA（lyric-motion）の演出の一覧
+
+自動生成（lyric-motion のエンジンの登録内容）。JIZURA の overrides で行ごとに固定するときに名前を探す用。
+入り方のうち motion-kit の Kinetic に近いものは → で示した（雰囲気の決まった作品では Kinetic を先に使う。JIZURA のおまかせは「激しい・チープ」と言われがち）。
+
+## 配置 layout（140）
+center・mixed・vcols・marquee・tile・scatter・ring・wave・huge・labels・condensed・gloss・type・diag・circle・stack・pill・lowerThird・corners・staircase・zigzag・arcTop・spiral・gridCells・dropCap・justified・frameBox・bubble・subtitleBar・ticker・splitScreen・mirror・sideways・edgeFrame・perspective・hanko・genkou・panels・filmstrip・quote・ruler・searchBar・chat・notification・ticket・rain・hanging・orbit・tunnel・wordCloud・bounceLine・elastic・crossBands・stickerBomb・neon・keycaps・bubbles・slotMachine・flipBoard・credits・zoomRepeat・splitHalves・columnsBig・circleWords・dotMatrix・depthStack・typeSpecimen・kanjiFocus・halfVertical・curtain・equalizer・tape・magazine・headlineDeck・contents・footnote・proofread・numbered・poster・swissGrid・dictionary・ema・ransom・newspaper・vinyl・cassette・bookSpine・polaroid・stampSheet・postcard・letterPaper・calendar・chochin・routeMap・stationSign・noren・tanzaku・omikuji・kakejiku・shoji・clapper・warningLabel・priceTag・nameTag・stickyNotes・karuta・cube・cylinder・flipCards・accordion・flag・ribbon・pendulum・pile・blocks・balloons・magnets・tiles・bulbs・ledScroll・billboard・crowdBubbles・crossword・wordSearch・puzzle・shadowPlay・kaleido・dominoes・burst・fisheye・wall・origami・zipper・sliceStack・glitchGrid・mosaicTiles・maskReveal・contour・halftoneBig・stencil
+
+## 入り方 enter（100）
+cut・assemble・slice・type → type・pop → pop・drop・stretch・wipe → wipe・blur・spin・flicker → flicker・scramble → scramble・zoom → zoomOut・riseMask → rise・dropMask → drop・slideL・slideR・slideWhole・flipX → flip・flipY → flip・domino・fold・unroll・strokeDraw → outline・outlineFill → outline・splitJoin → split・vSlice・shutter・iris・diagWipe・blinds・checker・randomOrder・bounceBig → pop・squashDrop・rubber・glitchIn・echoIn・whip → skew・skewIn → skew・trackIn → track・trackOut・blurStagger → fade・fadeStagger → fade・waveIn → wave・spiralIn・zoomOut → zoomIn・resolve・magnet・inkBleed → melt・neonOn → flicker・cursorSweep・stamp → stamp・springIn・pendulum・rollIn・slingshot・rockSettle・bounceBall・snapRail・fanOpen・cylinder・shuffle・stopMotion・ripple・zipper・zoomAlt・tiltUp・stickerPeel・crumple・noteUnfold・tornJoin・splitFlap・overexpose・glint → light・loupe・filmFeed・backlight・lightLeak → light・heatHaze・crtOn・interlace・loadingBar・dither・odometer・matrixRain・hatchFill・brushReveal・inkDrop → melt・quarters・invertBox・printRegister・echoCount・liquidFill・windBlown・strokeOrder・clockWipe・shadowFirst・bubbles・tokoroten
+
+## 消え方 exit（86）
+cut・explode・fall・drift・slice・wipe・shrink・blur・stretch・scatter・glitch・sinkMask・riseOut・slideOutL・slideOutR・flipOutX・flipOutY・foldOut・squash・trackOutWide・collapse・zoomThrough・zoomFar・spinOut・twist・waveOut・blurOutStagger・undraw・outlineOut・irisClose・diagWipeOut・blindsClose・checkerOut・splitApart・vSliceDrop・melt・dissolve・backspace・scrambleOut・glitchDissolve・echoOut・whipOut・gravity・popOut・burn・sweepCover・shatterLite・peelOff・crumpleOut・tearOut・scorchOut・overexposeOut・scanOut・stripesOut・halftoneOut・eraserOut・vacuumOut・sandOut・shredOut・dominoOut・hingeOut・rocketOff・bounceOff・balloonOff・deflateOut・hazeOut・glassBreak・zipOut・clapShut・lampOff・slotOut・clockOut・matrixOut・tornadoOut・rollUpOut・snakeOut・flutterOut・rollOff・fanClose・rgbSplitOut・shockOut・floodOut・slashOut・mosaicOut・scribbleOut・candleOut
+
+## 出ている間 hold（38）
+still・jitter・drift・breathe・wave・glitchtick・float・sway・pulse・shimmer・colorRun・rotateSlow・trackBreathe・skewWobble・beatHop・hWave・heartbeat・orbitSmall・jelly・scanBand・noiseDrift・tilt・zoomSlow・stretchPulse・glitchJump・echoTrail・glowFlicker・windGust・dangle・eqBounce・flashBox・glintSweep・flipSwap・shadowSway・magnetJiggle・typeRattle・focusRack・pluckString
+
+## 飾り decor（115）
+brackets・rings・dots・arrows・slash・sparks・leaders・waveform・barcode・grid・stripes・blobs・bars・shapes・counter・crosshair・cropMarks・reticle・radar・progressRing・timecodeBar・rulerEdge・dimension・indexNum・dateStamp・qrBlock・glitchRects・concentricSquares・triangleSpin・lineBurst・plusGrid・guides・waveLine・spiralLine・halftonePatch・checkerStrip・beatRing・orbitDots・constellation・confetti・petals・rainStreaks・snow・lightLeak・bokeh・speedCorner・risingParticles・twinkle・brushStroke・tapePieces・scribbleCircle・scribbleUnder・crossOut・highlightMark・heartsStars・watermarkKanji・verticalStrip・romajiLine・bracketsJP・seal・kamon・seigaiha・asanoha・hanabi・chochin・shimenawa・sensu・tsukiKumo・momiji・namiGashira・kasumi・hexGrid・spectrumRing・dataColumns・spinner・headingTape・glyphLock・atomOrbit・sonarArcs・circuit・swatches・ruledLines・registration・punchHoles・staple・paperClip・indexTabs・vines・cloudPuffs・starField・moonPhases・sunRays・rainRipples・bubbles・smoke・dandelion・fireflies・memphis・zigzagRibbon・polkaPatch・stripeCircle・decoCorners・halfCircles・loopArrows・starburst・tally・cursorClick・windowChrome・progressBar・toggleSwitch・notifBell・likeCounter・mediaControls・volumeBars・musicNotes
+
+## 文字の加工 treat（52）
+none・outline・outlineFill・doubleOutline・extrude・longShadow・hardShadow・softShadow・glow・marker・underline・strike・boxed・gradientV・splitColor・halftone・stripes・hatch・dotted・alternate・italic・wide・tall・echoOutline・emphasisDots・neonOutline・chrome・rainbow・glitchSplit・shadowStack・stencilGap・waterline・karaoke・sizeWave・rotateAlt・baselineShift・fauxBold・circled・bracketsQuote・reflection・inline・sticker・gradientSweep・kerningWide・monoGrid・outlineOffset・toneShadow・fadeChars・cutShift・focusPull・spotChar・ransom
+
+## 背景 bg（62）
+none・auroraRibbons・meshBlobs・duotoneSweep・horizonGlow・seigaiha・asanoha・houndstooth・herringbone・argyle・tartan・chevron・isoCubes・hexGrid・triTess・moire・squareTunnel・spiralArms・topoLines・ridgePlot・starfield・nightMoon・skyline・sunsetSun・oceanWaves・rainWindow・snowLayers・fireworks・cloudLayers・mountains・filmStrip・vhsBand・tornPaper・godRays・vignettePulse・kaleidoscope・marble・paperCut・sunburst・concentric・halftoneFade・bigStripes・splitV・splitH・splitDiag・gradientSweep・spotlight・tvBars・checker・bigChar・speedLines・scanBars・dotGrid・retroGrid・bokehBg・particlesBg・ripples・polka・eqBars・borderFrame・letterbox・noiseField
+
+## カメラ cam（28）
+push・orbitDrift・barrelRoll・pendulumSway・focusIn・rackFocus・earthquake・floatNoise・vertigo・tiltDown・spiralIn・snapPan・jelly・pullOut・panL・panR・tiltUp・dutch・handheld・beatPunch・whipIn・crashZoom・bounce・roll・driftDiag・shakeHard・dollyIn・stepZoom
+
+## 一瞬の効果 fx（66）
+chroma・shake・slice・block・invert・flash・zoom・mosaic・radialChroma・bloomFlash・bulge・pixelSort・interlace・macroBlock・halftone・duotone・ditherBit・rotateSnap・echoFrames・kaleido・bandInvert・lightRays・anamorphic・heartbeat・tvStatic・dustScratches・filmAdvance・perspectiveTilt・ripple・focusLines・speedLines・starGlint・colorBars・zoomStutter・negativeRing・edgeDetect・shatter・defocus・snapshot・squash・scanBar・loopScroll・panelWipe・irisTrans・doors・blindsTrans・rgbSplit・smear・vhsRoll・trackingNoise・mirrorFlash・strobe・posterize・hueShift・tileShift・filmBurn・whipBlur・blackFrame・whiteFrame・gridRepeat・waveWarp・pixelDrift・zoomPunch・lightSweep・crtOff・splitSlide
+
+## つなぎ trans（20）
+wipe・diagonalWipe・clockWipe・irisOpen・pushSlide・cover・uncover・zoomThrough・doorsOpen・blinds・checker・blockDissolve・whipPan・spinOut・inkBlob・shatterTiles・sliceShift・cubeTurn・flashCross・pixelate
+
+## スタイル（25）
+noir：ノワール・クロマ・crimson：クリムゾン・シグナル・caution：コーション・magenta：ポップ・マゼンタ・paper：ペーパー・インク・hud：ダークHUD・mint：ミント・ターミナル・specimen：スペシメン・transit：トランジット・blueprint：ブループリント・rouge：ルージュ・グラデ・mono：モノ・RGB・sakura：サクラ・ocean：深海・sunset：夕焼けグラデ・forest：森の手帖・vapor：ヴェイパー・newsprint：新聞・synth80：シンセ80s・kraft：クラフト紙・candy：キャンディ・acid：アシッド・sumi：墨と朱・gold：金夜・kaiki：怪奇

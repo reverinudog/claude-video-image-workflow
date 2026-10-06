@@ -1,0 +1,96 @@
+/* 画像レビュー画面（ポスター・サムネなどの静止画に、場所つきのメモを付ける） */
+body { overflow: hidden; }
+.imgrev { display: grid; grid-template-columns: minmax(0, 1fr) 420px; height: calc(100dvh - var(--topbar-h)); }
+.m-only { display: none; }
+
+/* ---------- 左：画像 ---------- */
+.stage { position: relative; display: flex; flex-direction: column; min-height: 0; min-width: 0; padding: 12px 14px 12px 16px; gap: 8px; }
+.live-strip { display: flex; align-items: center; gap: 12px; padding: 10px 14px; border-radius: 14px; background: var(--claude-soft); border: 1px solid var(--claude-line); font-size: var(--fs-s); animation: popIn .25s var(--ease); flex: none; }
+.live-strip .stepper { width: 180px; flex: none; }
+.verbar { display: flex; align-items: center; gap: 8px; flex: none; min-height: 36px; flex-wrap: wrap; }
+.verbar .vers { display: flex; gap: 2px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 10px; padding: 2px; max-width: 100%; overflow-x: auto; scrollbar-width: none; }
+.verbar .vers button { font: inherit; font-size: var(--fs-xs); font-weight: 700; color: var(--text-2); background: transparent; border: none; border-radius: 8px; height: 30px; min-width: 38px; padding: 0 9px; cursor: pointer; display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; }
+.verbar .vers button:hover { color: var(--text); background: var(--hover); }
+.verbar .vers button.on { background: var(--surface-3); color: var(--text); box-shadow: var(--shadow-1); }
+.verbar .vers button .n { color: var(--accent); font-size: var(--fs-xs); }
+.verbar .cmp.holding { background: var(--accent-soft); border-color: var(--accent-line); color: var(--accent); }
+.verbar .size { font-size: var(--fs-xs); }
+
+.wrap { position: relative; flex: 1; min-height: 160px; background: #000; border-radius: 14px; border: 1px solid #ffffff0d; box-shadow: var(--shadow-2); display: grid; place-items: center; overflow: auto; container-type: size; }
+.wrap.zoomed { place-items: start; }
+.canvas { position: relative; line-height: 0; user-select: none; -webkit-user-select: none; touch-action: pinch-zoom; cursor: crosshair; }
+.canvas img { display: block; max-width: 100cqw; max-height: 100cqh; pointer-events: none; }
+.pk-thumb { width: 44px; height: 44px; border-radius: 8px; flex: none; background: #000; object-fit: contain; }
+.wrap.zoomed .canvas img { max-width: none; max-height: none; }
+.canvas #imgPrev { position: absolute; inset: 0; width: 100%; height: 100%; }
+.canvas .cmp-tag { position: absolute; left: 10px; top: 10px; padding: 4px 10px; border-radius: 8px; background: #000000c0; color: #fff; font-size: var(--fs-xs); font-weight: 700; line-height: 1.4; }
+.marks { position: absolute; inset: 0; pointer-events: none; }
+.marks.hide { display: none; }
+
+/* 印：四角（範囲）と点。番号つき */
+.mk { position: absolute; pointer-events: auto; cursor: pointer; --c: var(--accent); }
+.mk.rect { border: 2px solid var(--c); border-radius: 6px; background: color-mix(in srgb, var(--c) 10%, transparent); box-shadow: 0 0 0 1px #000a, inset 0 0 0 1px #0006; transition: background .15s; }
+.mk.rect:hover, .mk.rect.sel { background: color-mix(in srgb, var(--c) 22%, transparent); }
+.mk .no { position: absolute; left: -2px; top: -2px; transform: translate(-40%, -40%); min-width: 24px; height: 24px; padding: 0 6px; border-radius: 12px; background: var(--c); color: #1b0e04; font: 800 var(--fs-xs)/24px var(--font); text-align: center; box-shadow: 0 1px 4px #000a; }
+.mk.pin { width: 0; height: 0; }
+.mk.pin .no { left: 0; top: 0; transform: translate(-50%, -50%); outline: 2px solid #000a; }
+.mk.pin::after { content: ""; position: absolute; left: -18px; top: -18px; width: 36px; height: 36px; border-radius: 50%; border: 2px solid var(--c); opacity: .55; }
+.mk.sent { --c: var(--claude); }
+.mk.sent .no { color: #fff; }
+.mk.done { --c: var(--ok); opacity: .55; }
+.mk.done .no { color: #fff; }
+.mk.sel { z-index: 2; opacity: 1; }
+.mk.sel .no { animation: pop .3s var(--spring); }
+.draft { position: absolute; border: 2px dashed var(--accent); background: var(--accent-soft); border-radius: 6px; pointer-events: none; }
+
+/* メモを書く吹き出し（印のそばに出る） */
+.composer { position: fixed; z-index: 30; width: min(380px, calc(100vw - 24px)); background: var(--surface); border: 1px solid var(--border-2); border-radius: 14px; box-shadow: var(--shadow-3); padding: 10px; display: flex; flex-direction: column; gap: 8px; animation: popIn .16s var(--ease); }
+.composer .textarea { min-height: 72px; max-height: 40dvh; font-size: var(--fs-m); }
+.composer .foot { display: flex; align-items: center; gap: 6px; }
+.composer .where { font-size: var(--fs-xs); }
+
+/* ---------- 右：メモ ---------- */
+.side { display: flex; flex-direction: column; min-height: 0; border-left: 1px solid var(--border); background: var(--bg-2); }
+.side-head { display: flex; align-items: center; gap: 8px; padding: 12px 12px 8px; flex: none; }
+.side-head .hint { font-size: var(--fs-xs); display: inline-flex; align-items: center; gap: 5px; }
+.list { position: relative; flex: 1; min-height: 0; overflow: auto; padding: 4px 12px 16px; display: flex; flex-direction: column; gap: 8px; }
+.note { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 4px 10px; align-items: start; padding: 10px 10px 10px 12px; border-radius: 12px; background: var(--surface); border: 1px solid var(--border); cursor: pointer; transition: border-color .15s, background .15s; }
+.note:hover { border-color: var(--border-2); }
+.note.sel { border-color: var(--accent-line); background: color-mix(in srgb, var(--accent) 6%, var(--surface)); }
+.note .no { min-width: 26px; height: 26px; padding: 0 6px; border-radius: 13px; background: var(--accent); color: #1b0e04; font: 800 var(--fs-xs)/26px var(--font); text-align: center; }
+.note.sent .no { background: var(--claude); color: #fff; }
+.note.done .no { background: var(--ok); color: #fff; }
+.note .text { font-size: var(--fs-m); line-height: 1.6; white-space: pre-wrap; word-break: break-word; }
+.note.done .text { color: var(--text-2); }
+.note .meta { grid-column: 2 / 3; display: flex; align-items: center; gap: 8px; font-size: var(--fs-xs); color: var(--text-3); flex-wrap: wrap; }
+.note .acts { display: flex; gap: 0; opacity: .0; transition: opacity .15s; }
+.note:hover .acts, .note.sel .acts { opacity: 1; }
+.note .reply { grid-column: 1 / -1; display: flex; gap: 8px; margin-top: 4px; padding: 8px 10px; border-radius: 10px; background: var(--claude-soft); border: 1px solid var(--claude-line); font-size: var(--fs-s); line-height: 1.6; white-space: pre-wrap; word-break: break-word; }
+.note .reply .avatar { width: 20px; height: 20px; margin-top: 2px; }
+.note .thumb { grid-column: 1 / -1; height: 84px; border-radius: 8px; background: #000 no-repeat; border: 1px solid var(--border); margin-top: 2px; }
+
+.reqs { flex: none; max-height: 34%; overflow: auto; border-top: 1px solid var(--border); padding: 10px 12px; display: flex; flex-direction: column; gap: 8px; }
+.req { padding: 10px 12px; border-radius: 12px; background: var(--surface); border: 1px solid var(--border); display: flex; flex-direction: column; gap: 8px; font-size: var(--fs-s); }
+.req.live { border-color: var(--claude-line); background: var(--claude-soft); }
+.req .result { line-height: 1.6; white-space: pre-wrap; word-break: break-word; }
+.sendbox { border-top: 1px solid var(--border); padding: 12px; background: var(--surface); display: flex; gap: 8px; align-items: flex-end; flex: none; }
+.sendbox .textarea { min-height: 42px; max-height: 140px; resize: none; overflow: auto; font-size: var(--fs-s); flex: 1; }
+.sendbox .btn.claude { height: 42px; }
+.sendbox .btn.fly .i { animation: fly .4s var(--ease); }
+@keyframes fly { to { transform: translate(18px, -18px); opacity: 0; } }
+
+@media (hover: none) { .note .acts { opacity: 1; } }
+@media (max-width: 1100px) { .imgrev { grid-template-columns: minmax(0, 1fr) 360px; } }
+@media (max-width: 820px) {
+  body { overflow: auto; }
+  .imgrev { display: block; height: auto; }
+  .m-only { display: block; }
+  .stage { padding: 8px 8px 10px; gap: 6px; }
+  .wrap { min-height: 0; container-type: inline-size; }
+  .canvas img { max-height: 72dvh; }
+  .composer { left: 12px !important; top: calc(var(--topbar-h) + 8px) !important; bottom: auto !important; }
+  .side { border-left: none; border-top: 1px solid var(--border); min-height: 50dvh; }
+  .list { overflow: visible; }
+  .sendbox { position: sticky; bottom: 0; padding-bottom: calc(12px + env(safe-area-inset-bottom)); box-shadow: 0 -10px 30px #0006; }
+  .live-strip .stepper { width: 140px; }
+}

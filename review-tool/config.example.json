@@ -1,0 +1,7 @@
+{
+  "root": "..",
+  "inbox": "inbox",
+  "port": 5178,
+  "host": "127.0.0.1",
+  "videoFolders": ["out"]
+}

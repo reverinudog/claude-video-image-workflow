@@ -1,0 +1,9 @@
+{
+  "name": "motion-kit",
+  "private": true,
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "sheet": "node tools/sheet.mjs",
+    "install-kit": "node tools/install.mjs"
+  }
+}
